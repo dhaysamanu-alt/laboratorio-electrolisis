@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#0b1520" />
+    <title>Laboratorio virtual | Seguridad</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <div class="brand">
+          <span class="brand-icon">⚗</span>
+          <div>
+            <small>LABORATORIO VIRTUAL</small
+            ><strong>Electrólisis de salmuera</strong>
+          </div>
+        </div>
+        <div class="stage">ETAPA 0 <span>·</span> SEGURIDAD</div>
+      </header>
+      <main>
+        <section id="introScreen" class="intro">
+          <p class="eyebrow">ANTES DE COMENZAR</p>
+          <h1>Selecciona tu técnico de laboratorio</h1>
+          <p>
+            Elige el personaje que te acompañará durante toda la práctica. Ambos
+            utilizan el mismo diseño y podrán equiparse con los elementos de
+            protección.
+          </p>
+        </section>
+        <section
+          id="selectionScreen"
+          class="selection"
+          aria-label="Seleccionar personaje"
+        >
+          <button
+            class="avatar-card"
+            data-character="male"
+            aria-pressed="false"
+          >
+            <div class="portrait">
+              <img
+                src="assets/avatares/tecnico_base.png"
+                alt="Técnico de laboratorio con ropa básica, sin EPI"
+              />
+            </div>
+            <div class="card-info">
+              <div><strong>Técnico</strong><span>Modelo 01</span></div>
+              <span class="check" aria-hidden="true">✓</span>
+            </div></button
+          ><button
+            class="avatar-card"
+            data-character="female"
+            aria-pressed="false"
+          >
+            <div class="portrait">
+              <img
+                src="assets/avatares/tecnica_base.png"
+                alt="Técnica de laboratorio con ropa básica, sin EPI"
+              />
+            </div>
+            <div class="card-info">
+              <div><strong>Técnica</strong><span>Modelo 02</span></div>
+              <span class="check" aria-hidden="true">✓</span>
+            </div>
+          </button>
+        </section>
+        <div id="selectionFooter" class="footer">
+          <p id="selectionStatus" aria-live="polite">
+            Selecciona un personaje para continuar.
+          </p>
+          <button id="continueBtn" disabled>
+            Continuar al equipamiento <span aria-hidden="true">→</span>
+          </button>
+        </div>
+        <!-- ETAPA 0: EQUIPAMIENTO DEL TÉCNICO -->
+        <section id="nextScreen" class="next-screen" hidden>
+          <div class="equipment-header">
+            <p class="eyebrow">ETAPA 0 · SEGURIDAD</p>
+            <h2>Equipa a tu técnico de laboratorio</h2>
+            <p>
+              Selecciona los elementos de protección adecuados. Puedes
+              equiparlos en cualquier orden.
+            </p>
+          </div>
+
+          <div class="equipment-layout">
+            <!-- Panel izquierdo -->
+            <div class="equipment-panel">
+              <h3>Protección</h3>
+              <div class="equipment-placeholder">Cofia</div>
+              <div class="equipment-placeholder">Lentes</div>
+              <div class="equipment-placeholder">Barbijo</div>
+            </div>
+
+            <!-- Personaje seleccionado -->
+            <div class="equipment-avatar">
+              <img id="selectedPreview" alt="Personaje seleccionado" />
+            </div>
+
+            <!-- Panel derecho -->
+            <div class="equipment-panel">
+              <h3>Vestimenta</h3>
+              <div class="equipment-placeholder">Guantes</div>
+              <div class="equipment-placeholder">Delantal</div>
+              <div class="equipment-placeholder">Calzado</div>
+            </div>
+          </div>
+
+          <div class="equipment-footer">
+            <p>Equipamiento completado: 0 de 6</p>
+
+            <button id="backBtn" type="button">← Cambiar personaje</button>
+          </div>
+        </section>
+      </main>
+      <footer class="legal">
+        Simulación educativa. No representa instrucciones para realizar
+        electrólisis física.
+      </footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
