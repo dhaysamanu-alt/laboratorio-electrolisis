@@ -361,9 +361,11 @@ button#continueBtn span {
 
 .equipment-layout {
   display: grid;
-  grid-template-columns: 1fr 1.5fr 1fr;
-  gap: 18px;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 24px;
   align-items: center;
+  max-width: 650px;
+  margin: 0 auto;
 }
 
 .equipment-panel {
@@ -391,11 +393,7 @@ button#continueBtn span {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: radial-gradient(
-    ellipse at center,
-    #2a485e,
-    #132635
-  );
+  background: radial-gradient(ellipse at center, #2a485e, #132635);
   border-radius: 16px;
 }
 
@@ -420,12 +418,12 @@ button#continueBtn span {
 /* Adaptación para celulares */
 @media (max-width: 640px) {
   .equipment-layout {
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .equipment-avatar {
-    grid-column: 1 / -1;
+    grid-column: 1;
     grid-row: 1;
     height: 310px;
   }
@@ -445,3 +443,1077 @@ button#continueBtn span {
     text-align: center;
   }
 }
+/* Ocultar correctamente las pantallas inactivas */
+[hidden] {
+  display: none !important;
+}
+/* Elementos interactivos del equipamiento */
+
+.equipment-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  font: inherit;
+  transition: 0.2s ease;
+}
+
+.equipment-item:hover {
+  border-color: #66c6f3;
+  background: #2a4a60;
+}
+
+.equipment-item[aria-pressed="true"] {
+  border-color: #68d6a1;
+  background: #214b42;
+  color: #b5f5d3;
+}
+
+.equipment-item:focus-visible {
+  outline: 3px solid #a0e5ff;
+  outline-offset: 3px;
+}
+/* Cofia superpuesta al personaje */
+
+/* COFIA: ajuste sobre la cabeza del personaje */
+
+.equipment-avatar {
+  position: relative;
+  overflow: hidden;
+}
+
+.equipment-avatar .cofia-overlay {
+  position: absolute;
+  width: 100%;
+  height: 95%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: contain;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Opciones del paso de protección de ojos */
+#opcionesOjos:not([hidden]) {
+  display: grid;
+  gap: 14px;
+}
+
+#opcionesOjos .equipment-item {
+  min-height: 55px;
+}
+
+/* PASO 3: Opciones de barbijo */
+#opcionesBarbijo:not([hidden]) {
+  display: grid;
+  gap: 14px;
+}
+
+#opcionesBarbijo .equipment-item {
+  min-height: 55px;
+}
+
+/* PASO 4: Protección de manos */
+#opcionesGuantes:not([hidden]) {
+  display: grid;
+  gap: 14px;
+}
+
+#opcionesGuantes .equipment-item {
+  min-height: 55px;
+}
+
+/* PASO 5: Protección del cuerpo */
+#opcionesDelantal:not([hidden]) {
+  display: grid;
+  gap: 14px;
+}
+
+#opcionesDelantal .equipment-item {
+  min-height: 55px;
+}
+
+/* PASO 6: Protección de pies */
+#opcionesCalzado:not([hidden]) {
+  display: grid;
+  gap: 14px;
+}
+
+#opcionesCalzado .equipment-item {
+  min-height: 55px;
+}
+
+/* PANTALLA DE EQUIPAMIENTO COMPLETADO */
+
+.completed-screen[hidden] {
+  display: none !important;
+}
+
+.completed-screen {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 35px 24px;
+  border: 1px solid #37677b;
+  border-radius: 18px;
+  background: #142c3b;
+  text-align: center;
+  color: #ffffff;
+}
+
+.completed-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.completed-label {
+  color: #65cfff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.completed-content h2 {
+  margin: 0;
+  font-size: clamp(24px, 4vw, 34px);
+}
+
+.completed-description {
+  max-width: 500px;
+  color: #a9c9d9;
+  line-height: 1.6;
+}
+
+.completed-avatar {
+  display: block;
+  width: min(100%, 260px);
+  height: 390px;
+  object-fit: contain;
+}
+
+.completed-progress {
+  color: #92edc0;
+  font-weight: 700;
+}
+
+#enterLabBtn {
+  padding: 14px 26px;
+  border: none;
+  border-radius: 10px;
+  background: #38bdf8;
+  color: #082334;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#enterLabBtn:hover {
+  background: #7dd3fc;
+}
+
+/* ETAPA 1: INTRODUCCIÓN */
+
+#labIntroScreen[hidden] {
+  display: none !important;
+}
+
+#startLabBtn {
+  padding: 14px 26px;
+  border: none;
+  border-radius: 10px;
+  background: #38bdf8;
+  color: #082334;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#startLabBtn:hover {
+  background: #7dd3fc;
+}
+
+/* ETAPA 1: IDENTIFICACIÓN DE MATERIALES */
+
+.materials-screen {
+  max-width: 900px;
+  margin: 30px auto 45px;
+  padding: 24px;
+  border: 1px solid #37677b;
+  border-radius: 18px;
+  background: #142c3b;
+}
+
+.materials-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.material-card {
+  padding: 24px 18px;
+  border: 1px solid #426075;
+  border-radius: 14px;
+  background: #20394b;
+  text-align: center;
+}
+
+.material-icon {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 42px;
+}
+
+.material-card h3 {
+  margin: 0 0 10px;
+  font-size: 17px;
+}
+
+.material-card p {
+  margin: 0;
+  color: #a9c9d9;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.materials-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 25px;
+}
+
+.materials-footer p {
+  color: #a9c9d9;
+}
+
+#continueMaterialsBtn {
+  padding: 14px 22px;
+  border: none;
+  border-radius: 10px;
+  background: #38bdf8;
+  color: #082334;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#continueMaterialsBtn:disabled {
+  background: #304656;
+  color: #8799a7;
+  cursor: not-allowed;
+}
+
+@media (max-width: 640px) {
+  .materials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .materials-footer {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* MESA INTERACTIVA */
+
+.workbench-screen[hidden],
+.placed-beaker[hidden],
+.beaker-placeholder[hidden] {
+  display: none !important;
+}
+
+.workbench-screen {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 24px;
+  background: #142c3b;
+  border: 1px solid #37677b;
+  border-radius: 18px;
+  color: #ffffff;
+}
+
+.workbench-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.workbench-heading h2 {
+  margin: 8px 0;
+}
+
+.workbench-stage {
+  color: #65cfff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.workbench-step {
+  padding: 8px 14px;
+  background: #203e51;
+  border-radius: 20px;
+  font-size: 13px;
+}
+
+.workbench-instruction {
+  color: #b9d4e2;
+  margin: 15px 0 22px;
+}
+
+.workbench-layout {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  gap: 20px;
+}
+
+.materials-tray {
+  padding: 16px;
+  border: 1px solid #385b70;
+  border-radius: 14px;
+  background: #1b3547;
+}
+
+.materials-tray h3 {
+  margin: 0 0 18px;
+  font-size: 15px;
+}
+
+.draggable-material {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid #567b91;
+  border-radius: 12px;
+  background: #25475c;
+  cursor: grab;
+  text-align: center;
+  user-select: none;
+}
+
+.draggable-material svg {
+  width: 90px;
+  height: 110px;
+}
+
+.draggable-material span {
+  font-size: 12px;
+}
+
+.draggable-material.selected {
+  border-color: #65cfff;
+  background: #2c5a70;
+}
+
+.draggable-material.used {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.lab-table-area {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 340px;
+  overflow: hidden;
+  border: 1px solid #34566b;
+  border-radius: 14px;
+  background: radial-gradient(ellipse at center, #24475b 0%, #102735 85%);
+}
+
+.lab-table-surface {
+  position: absolute;
+  bottom: 30px;
+  left: 4%;
+  width: 92%;
+  height: 18px;
+  background: linear-gradient(#b18b62, #78573e);
+  border-radius: 5px;
+  box-shadow: 0 12px 0 #563d2e;
+}
+
+.beaker-drop-zone {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 170px;
+  height: 190px;
+  margin-bottom: 55px;
+  border: 2px dashed #5d879e;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.beaker-drop-zone.drag-over,
+.beaker-drop-zone.selected {
+  border-color: #65cfff;
+  background: rgba(101, 207, 255, 0.1);
+}
+
+.beaker-drop-zone.completed {
+  border-color: transparent;
+  cursor: default;
+}
+
+.beaker-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  color: #8aa8ba;
+  font-size: 12px;
+}
+
+.beaker-placeholder svg {
+  width: 100px;
+  height: 125px;
+}
+
+.placed-beaker svg {
+  width: 120px;
+  height: 145px;
+}
+
+.workbench-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+#workbenchStatus {
+  color: #b9d4e2;
+}
+
+#nextWorkbenchBtn {
+  padding: 13px 22px;
+  border: none;
+  border-radius: 10px;
+  background: #38bdf8;
+  color: #082334;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#nextWorkbenchBtn:disabled {
+  background: #304656;
+  color: #8799a7;
+  cursor: not-allowed;
+}
+
+@media (max-width: 650px) {
+  .workbench-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .materials-tray {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .draggable-material {
+    width: 150px;
+  }
+
+  .workbench-footer {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* Quitar el contorno del destino al completar */
+.beaker-drop-zone.completed {
+  border-color: transparent;
+  background: transparent;
+}
+
+/* Tamaño del vaso en la bandeja */
+.draggable-material svg {
+  width: 105px;
+  height: 125px;
+}
+
+/* POSICIÓN CORREGIDA: VASO APOYADO EN LA MESA */
+
+.lab-table-area {
+  position: relative;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+/* Superficie de madera */
+.lab-table-surface {
+  position: absolute;
+  left: 4%;
+  bottom: 30px;
+  width: 92%;
+  height: 24px;
+  margin: 0;
+  z-index: 1;
+
+  background: linear-gradient(to bottom, #c69b70 0%, #a67b53 35%, #795238 100%);
+
+  border-radius: 5px;
+  box-shadow: 0 12px 0 #563d2e;
+}
+
+/* Zona del vaso: anclada a la parte superior de la madera */
+.beaker-drop-zone {
+  position: absolute;
+
+  left: 50%;
+  bottom: 54px;
+  transform: translateX(-50%);
+
+  width: 210px;
+  height: 225px;
+
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+/* Contenedor del vaso colocado */
+.placed-beaker {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* SVG grande y alineado por su base */
+.placed-beaker svg {
+  display: block;
+  width: 180px;
+  height: 210px;
+  flex-shrink: 0;
+}
+
+/* El contorno desaparece al completar */
+.beaker-drop-zone.completed {
+  border: 2px solid transparent;
+  background: transparent;
+}
+
+/* Vaso en la bandeja */
+.draggable-material svg {
+  width: 105px;
+  height: 125px;
+}
+.placed-beaker svg {
+  transform: translateY(10px);
+}
+
+/* ==========================================
+   CORRECCIÓN FINAL: VASO SOBRE LA MESA
+   ========================================== */
+
+.lab-table-area {
+  position: relative;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+/* Superficie de madera */
+.lab-table-surface {
+  position: absolute;
+  left: 4%;
+  bottom: 30px;
+  width: 92%;
+  height: 24px;
+  z-index: 1;
+
+  background: linear-gradient(to bottom, #c69b70 0%, #a67b53 40%, #795238 100%);
+
+  border-radius: 5px;
+  box-shadow: 0 12px 0 #563d2e;
+}
+
+/* Destino del vaso */
+.beaker-drop-zone {
+  position: absolute;
+  left: 50%;
+  bottom: 54px;
+  transform: translateX(-50%);
+
+  width: 210px;
+  height: 220px;
+
+  margin: 0;
+  padding: 0;
+  border-width: 2px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+/* Contenedor del vaso colocado */
+.placed-beaker {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* SVG apoyado en la madera */
+.placed-beaker svg {
+  display: block;
+
+  width: 180px;
+  height: 200px;
+
+  margin: 0;
+  padding: 0;
+
+  flex-shrink: 0;
+
+  /*
+    El SVG termina en y=200,
+    pero el vidrio termina en y=186.
+    Compensamos esos 14 puntos vacíos.
+  */
+  transform: translateY(14px);
+}
+
+/* Sin contorno al colocar correctamente */
+.beaker-drop-zone.completed {
+  border-color: transparent;
+  background: transparent;
+}
+
+/* Vaso pequeño en la bandeja */
+.draggable-material svg {
+  width: 105px;
+  height: 125px;
+}
+
+/* SEGUNDO PASO: AGUA DESTILADA */
+
+#draggableWater[hidden] {
+  display: none !important;
+}
+
+#draggableWater {
+  margin-top: 12px;
+}
+
+#draggableWater.selected {
+  border-color: #65cfff;
+  background: #2c5a70;
+}
+
+#draggableWater.used {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* Animación del agua dentro del vaso */
+.beaker-water {
+  animation: waterFill 1.8s ease-out forwards;
+  transform-box: fill-box;
+  transform-origin: bottom;
+}
+/* Mantener el agua llena después de la primera animación */
+.beaker-water.water-filled {
+  animation: none;
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+@keyframes waterFill {
+  from {
+    transform: scaleY(0);
+    opacity: 0.2;
+  }
+
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+/* =====================================
+   PASO 3: DISOLUCIÓN DE NaCl
+   ===================================== */
+
+/* Cristales de NaCl */
+.salt-crystal {
+  fill: #f7fcff;
+  stroke: #d1e6f1;
+  stroke-width: 0.5;
+  opacity: 0;
+  pointer-events: none;
+
+  animation: saltDissolve 1.8s linear forwards;
+  animation-delay: var(--delay, 0s);
+}
+
+/* Caída vertical y disolución */
+@keyframes saltDissolve {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  55% {
+    opacity: 1;
+    transform: translateY(48px);
+  }
+
+  75% {
+    opacity: 0.7;
+    transform: translateY(65px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(78px);
+  }
+}
+
+/* Movimiento de la salmuera sin reiniciar el llenado */
+.beaker-water.water-filled.salt-water-motion {
+  animation: solutionMix 1.6s ease-in-out 2;
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+@keyframes solutionMix {
+  0%,
+  100% {
+    fill-opacity: 0.45;
+  }
+
+  50% {
+    fill-opacity: 0.58;
+  }
+}
+/* PASO 5: FUENTE DE CORRIENTE CONTINUA */
+
+.lab-table-area {
+  position: relative;
+}
+
+.power-supply-drop-zone {
+  position: absolute;
+  right: 3%;
+  bottom: 7%;
+  width: clamp(125px, 30%, 195px);
+  height: 125px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  z-index: 3;
+}
+
+#placedPowerSupply {
+  width: 100%;
+}
+
+#placedPowerSupply svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 8px 7px rgba(0, 0, 0, 0.3));
+}
+
+.power-supply-drop-zone.drag-over {
+  outline: 2px dashed #69d5ff;
+  outline-offset: 4px;
+  border-radius: 12px;
+  background: rgba(105, 213, 255, 0.08);
+}
+
+@media (max-width: 640px) {
+  .power-supply-drop-zone {
+    right: 2%;
+    width: 30%;
+    min-height: 75px;
+  }
+}
+
+/* Guía visual para colocar la fuente */
+
+.power-supply-guide {
+  position: absolute;
+  inset: 0;
+  border: 2px dashed #67d4ff;
+  border-radius: 12px;
+  background: rgba(53, 176, 226, 0.08);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  color: #b5ebff;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+
+  pointer-events: none;
+}
+
+.power-guide-arrow {
+  font-size: 25px;
+  line-height: 1;
+}
+
+.power-supply-drop-zone.drag-over .power-supply-guide {
+  background: rgba(66, 210, 255, 0.19);
+  border-color: #a2f0ff;
+  box-shadow: 0 0 18px rgba(70, 205, 255, 0.2);
+}
+
+#placedPowerSupply {
+  position: relative;
+  width: 100%;
+  transform: translateY(5px);
+}
+
+#placedPowerSupply svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 640px) {
+  .power-supply-drop-zone {
+    right: 2%;
+    bottom: 7%;
+    width: 30%;
+    height: 85px;
+  }
+
+  .power-supply-guide {
+    font-size: 10px;
+  }
+}
+/* Ocultar completamente la guía después de colocar la fuente */
+#powerSupplyGuide[hidden] {
+  display: none !important;
+}
+
+/* PASO 6: CONEXIONES ELÉCTRICAS */
+
+.electrical-connections {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 5;
+  display: block;
+}
+
+.electrical-connections path {
+  fill: none;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.35));
+}
+
+.electrical-connections .negative-wire {
+  stroke: #202a35;
+}
+
+.electrical-connections .positive-wire {
+  stroke: #f05a65;
+}
+
+/* Indicador de selección de cables */
+#draggableCables.selected {
+  outline: 2px solid #69d5ff;
+  outline-offset: 3px;
+  background: rgba(105, 213, 255, 0.12);
+}
+/* PASO 7: botón de encendido interactivo */
+
+#placedPowerSupply svg {
+  user-select: none;
+}
+
+#placedPowerSupply.power-ready {
+  cursor: pointer;
+}
+
+#placedPowerSupply.power-on {
+  filter: drop-shadow(0 0 9px rgba(100, 245, 160, 0.15));
+}
+
+/* =====================================
+   PASO 8: BURBUJAS DE ELECTRÓLISIS
+   ===================================== */
+
+.electrolysis-bubble {
+  pointer-events: none;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: bubbleRise 2.4s linear infinite;
+}
+
+@keyframes bubbleRise {
+  0% {
+    transform: translate(0, 0) scale(0.6);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.85;
+  }
+
+  65% {
+    opacity: 0.75;
+  }
+
+  100% {
+    transform: translate(3px, -22px) scale(1.15);
+    opacity: 0;
+  }
+}
+
+/* PASO 10: tubo de ensayo independiente, proporcionado y apoyado en la mesa */
+#sampleTubeStation {
+  position: absolute;
+  left: 23%;
+  bottom: 54px;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 4;
+  pointer-events: auto;
+  cursor: pointer;
+}
+#sampleTubeStation svg {
+  display: block;
+  width: 76px;
+  height: 122px;
+  overflow: visible;
+  filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.25));
+}
+#sampleTubeStation span {
+  position: absolute;
+  bottom: -23px;
+  font-size: 10px;
+  color: #c8e7f4;
+  white-space: nowrap;
+}
+@media (max-width: 640px) {
+  #sampleTubeStation {
+    left: 9%;
+    width: 70px;
+  }
+  #sampleTubeStation svg {
+    width: 62px;
+    height: 100px;
+  }
+  #sampleTubeStation span {
+    font-size: 9px;
+  }
+}
+
+/* PASO 13: RESULTADOS Y EVALUACIÓN */
+
+#resultsScreen {
+  max-width: 850px;
+}
+
+#resultsScreen .completed-content {
+  align-items: stretch;
+  text-align: left;
+}
+
+.results-summary {
+  padding: 18px;
+  border: 1px solid #426075;
+  border-radius: 12px;
+  background: #20394b;
+  line-height: 1.6;
+}
+
+#finalQuiz {
+  display: grid;
+  gap: 18px;
+}
+
+#finalQuiz fieldset {
+  border: 1px solid #426075;
+  border-radius: 12px;
+  padding: 18px;
+  display: grid;
+  gap: 12px;
+}
+
+#finalQuiz legend {
+  font-weight: 700;
+  padding: 0 8px;
+}
+
+#finalQuiz label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+}
+
+#finalQuiz input {
+  margin-top: 4px;
+  accent-color: #66c6f3;
+}
+
+#gradeQuizBtn {
+  padding: 14px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #38bdf8;
+  color: #082334;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#quizResult {
+  padding: 18px;
+  border: 1px solid #426075;
+  border-radius: 12px;
+  background: #20394b;
+  line-height: 1.6;
+}
+

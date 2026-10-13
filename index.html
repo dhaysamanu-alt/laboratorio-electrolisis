@@ -24,9 +24,8 @@
           <p class="eyebrow">ANTES DE COMENZAR</p>
           <h1>Selecciona tu técnico de laboratorio</h1>
           <p>
-            Elige el personaje que te acompañará durante toda la práctica. Ambos
-            utilizan el mismo diseño y podrán equiparse con los elementos de
-            protección.
+            Elige el personaje que te acompañará durante toda la práctica. Para
+            equiparlos con los elementos de protección (EPI).
           </p>
         </section>
         <section
@@ -46,7 +45,7 @@
               />
             </div>
             <div class="card-info">
-              <div><strong>Técnico</strong><span>Modelo 01</span></div>
+              <div><strong>Técnico</strong></div>
               <span class="check" aria-hidden="true">✓</span>
             </div></button
           ><button
@@ -61,7 +60,7 @@
               />
             </div>
             <div class="card-info">
-              <div><strong>Técnica</strong><span>Modelo 02</span></div>
+              <div><strong>Técnica</strong></div>
               <span class="check" aria-hidden="true">✓</span>
             </div>
           </button>
@@ -80,45 +79,1751 @@
             <p class="eyebrow">ETAPA 0 · SEGURIDAD</p>
             <h2>Equipa a tu técnico de laboratorio</h2>
             <p>
-              Selecciona los elementos de protección adecuados. Puedes
-              equiparlos en cualquier orden.
+              Selecciona el equipo de protección correcto para cada etapa. Solo
+              podrás avanzar cuando elijas la opción adecuada.
             </p>
           </div>
 
           <div class="equipment-layout">
             <!-- Panel izquierdo -->
             <div class="equipment-panel">
-              <h3>Protección</h3>
-              <div class="equipment-placeholder">Cofia</div>
-              <div class="equipment-placeholder">Lentes</div>
-              <div class="equipment-placeholder">Barbijo</div>
+              <h3 id="epiCategory">Protección de cabeza</h3>
+
+              <button
+                id="cofiaBtn"
+                class="equipment-placeholder equipment-item"
+                type="button"
+                aria-pressed="false"
+              >
+                Cofia
+              </button>
+
+              <button
+                id="gorraBtn"
+                class="equipment-placeholder equipment-item"
+                type="button"
+              >
+                Gorra
+              </button>
+
+              <button
+                id="cascoBtn"
+                class="equipment-placeholder equipment-item"
+                type="button"
+              >
+                Casco
+              </button>
+
+              <div id="opcionesOjos" hidden>
+                <button
+                  id="lentesBtn"
+                  class="equipment-placeholder equipment-item"
+                  type="button"
+                >
+                  Lentes de seguridad
+                </button>
+
+                <button
+                  id="gafasSolBtn"
+                  class="equipment-placeholder equipment-item"
+                  type="button"
+                >
+                  Gafas de sol
+                </button>
+
+                <button
+                  id="lecturaBtn"
+                  class="equipment-placeholder equipment-item"
+                  type="button"
+                >
+                  Lentes de lectura
+                </button>
+              </div>
+
+              <!-- PASO 3: BARBIJO -->
+              <div id="opcionesBarbijo" hidden>
+                <button
+                  id="barbijoBtn"
+                  class="equipment-placeholder equipment-item"
+                  type="button"
+                >
+                  Barbijo
+                </button>
+
+                <button
+                  id="mascarillaTelaBtn"
+                  class="equipment-placeholder equipment-item"
+                  type="button"
+                >
+                  Mascarilla de tela
+                </button>
+
+                <button
+                  id="panueloBtn"
+                  class="equipment-placeholder equipment-item"
+                  type="button"
+                >
+                  Pañuelo
+                </button>
+              </div>
+
+              <!-- PASO 4: PROTECCIÓN DE MANOS -->
+              <div id="opcionesGuantes" hidden>
+                <button
+                  id="guantesBtn"
+                  class="equipment-placeholder equipment-item"
+                  type="button"
+                >
+                  Guantes de protección química
+                </button>
+
+                <button
+                  id="guantesTelaBtn"
+                  class="equipment-placeholder equipment-item"
+                  type="button"
+                >
+                  Guantes de tela
+                </button>
+
+                <button
+                  id="sinGuantesBtn"
+                  class="equipment-placeholder equipment-item"
+                  type="button"
+                >
+                  Trabajar sin guantes
+                </button>
+              </div>
+
+              <!-- PASO 5: PROTECCIÓN DEL CUERPO -->
+              <div id="opcionesDelantal" hidden>
+                <button
+                  id="delantalBtn"
+                  class="equipment-placeholder equipment-item"
+                  type="button"
+                >
+                  Delantal de protección química
+                </button>
+
+                <button
+                  id="delantalTelaBtn"
+                  class="equipment-placeholder equipment-item"
+                  type="button"
+                >
+                  Delantal de tela
+                </button>
+
+                <button
+                  id="mandilCocinaBtn"
+                  class="equipment-placeholder equipment-item"
+                  type="button"
+                >
+                  Mandil de cocina
+                </button>
+              </div>
+
+              <!-- PASO 6: PROTECCIÓN DE PIES -->
+              <div id="opcionesCalzado" hidden>
+                <button
+                  id="calzadoBtn"
+                  class="equipment-placeholder equipment-item"
+                  type="button"
+                >
+                  Calzado de seguridad
+                </button>
+
+                <button
+                  id="zapatillasBtn"
+                  class="equipment-placeholder equipment-item"
+                  type="button"
+                >
+                  Zapatillas deportivas
+                </button>
+
+                <button
+                  id="sandaliasBtn"
+                  class="equipment-placeholder equipment-item"
+                  type="button"
+                >
+                  Sandalias
+                </button>
+              </div>
             </div>
 
             <!-- Personaje seleccionado -->
             <div class="equipment-avatar">
               <img id="selectedPreview" alt="Personaje seleccionado" />
+
+              <img
+                id="cofiaOverlay"
+                class="cofia-overlay"
+                alt="Cofia blanca equipada"
+                hidden
+              />
             </div>
 
             <!-- Panel derecho -->
-            <div class="equipment-panel">
-              <h3>Vestimenta</h3>
-              <div class="equipment-placeholder">Guantes</div>
-              <div class="equipment-placeholder">Delantal</div>
-              <div class="equipment-placeholder">Calzado</div>
-            </div>
           </div>
 
           <div class="equipment-footer">
-            <p>Equipamiento completado: 0 de 6</p>
+            <p id="equipmentProgress">Equipamiento completado: 0 de 6</p>
+
+            <button id="nextEpiBtn" type="button" disabled>
+              Siguiente EPI →
+            </button>
 
             <button id="backBtn" type="button">← Cambiar personaje</button>
           </div>
         </section>
+
+        <!-- PANTALLA: EQUIPAMIENTO COMPLETADO -->
+        <section id="completedScreen" class="completed-screen" hidden>
+          <div class="completed-content">
+            <p class="completed-label">ETAPA 0 · SEGURIDAD</p>
+
+            <h2>¡Equipamiento completado!</h2>
+
+            <p class="completed-description">
+              Has seleccionado correctamente los 6 elementos de protección
+              personal.
+            </p>
+
+            <img
+              id="completedAvatar"
+              src=""
+              alt="Técnico de laboratorio completamente equipado"
+              class="completed-avatar"
+            />
+
+            <p class="completed-progress">✓ Equipamiento completado: 6 de 6</p>
+
+            <button id="enterLabBtn" type="button">
+              Ingresar al laboratorio →
+            </button>
+          </div>
+        </section>
+
+        <!-- ETAPA 1: INTRODUCCIÓN AL LABORATORIO -->
+        <section id="labIntroScreen" class="completed-screen" hidden>
+          <div class="completed-content">
+            <p class="completed-label">ETAPA 1 · INTRODUCCIÓN</p>
+
+            <h2>Laboratorio de electrólisis de salmuera</h2>
+
+            <p class="completed-description">
+              Bienvenido al laboratorio virtual. En esta experiencia aprenderás
+              cómo funciona la electrólisis de una solución acuosa de cloruro de
+              sodio (NaCl).
+            </p>
+
+            <p class="completed-description">
+              Identificarás los materiales, prepararás el montaje experimental y
+              observarás los procesos que ocurren durante la electrólisis.
+            </p>
+
+            <button id="startLabBtn" type="button">
+              Comenzar laboratorio →
+            </button>
+          </div>
+        </section>
+
+        <!-- ETAPA 1: IDENTIFICACIÓN DE MATERIALES -->
+        <section id="materialsScreen" class="materials-screen" hidden>
+          <div class="equipment-header">
+            <p class="eyebrow">ETAPA 1 · MATERIALES</p>
+
+            <h2>Identificación de materiales</h2>
+
+            <p>
+              Antes de comenzar el experimento, conoce los materiales que
+              utilizaremos en nuestro laboratorio virtual de electrólisis de
+              salmuera.
+            </p>
+          </div>
+
+          <div class="materials-grid">
+            <div class="material-card">
+              <span class="material-icon">🧪</span>
+              <h3>Vaso de precipitados</h3>
+              <p>Recipiente utilizado para contener la solución.</p>
+            </div>
+
+            <div class="material-card">
+              <span class="material-icon">🔋</span>
+              <h3>Fuente de corriente continua</h3>
+              <p>Proporciona energía eléctrica al sistema.</p>
+            </div>
+
+            <div class="material-card">
+              <span class="material-icon">⚡</span>
+              <h3>Electrodos</h3>
+              <p>Permiten el paso de corriente hacia la solución.</p>
+            </div>
+
+            <div class="material-card">
+              <span class="material-icon">🧂</span>
+              <h3>Solución de NaCl</h3>
+              <p>Electrolito utilizado en la simulación.</p>
+            </div>
+          </div>
+
+          <div class="materials-footer">
+            <button id="continueMaterialsBtn" type="button" disabled>
+              Continuar al montaje →
+            </button>
+          </div>
+        </section>
+
+        <!-- PASO 13: RESULTADOS Y EVALUACIÓN -->
+        <section id="resultsScreen" class="completed-screen" hidden>
+          <div class="completed-content">
+            <p class="completed-label">ETAPA FINAL · RESULTADOS</p>
+            <h2>Resultados de la electrólisis de salmuera</h2>
+
+            <div class="results-summary">
+              <p>
+                <strong>Electrólisis:</strong> se observaron burbujas en los
+                electrodos, asociadas a la formación de gases.
+              </p>
+              <p>
+                <strong>Fenolftaleína:</strong> la coloración rosada indicó un
+                medio alcalino, compatible con NaOH.
+              </p>
+              <p>
+                <strong>Cloruro férrico:</strong> se representó la formación de
+                un precipitado marrón rojizo.
+              </p>
+            </div>
+
+            <h3>Evaluación final</h3>
+            <p>Responde las tres preguntas según lo aprendido.</p>
+
+            <form id="finalQuiz">
+              <fieldset>
+                <legend>
+                  1. ¿Qué función cumple la corriente eléctrica en la
+                  electrólisis?
+                </legend>
+                <label
+                  ><input type="radio" name="q1" value="a" required /> Calentar
+                  la solución hasta evaporarla.</label
+                >
+                <label
+                  ><input type="radio" name="q1" value="b" /> Provocar una
+                  reacción química no espontánea.</label
+                >
+                <label
+                  ><input type="radio" name="q1" value="c" /> Separar
+                  físicamente la sal del agua.</label
+                >
+              </fieldset>
+
+              <fieldset>
+                <legend>
+                  2. ¿Qué indica la coloración rosada de la fenolftaleína?
+                </legend>
+                <label
+                  ><input type="radio" name="q2" value="a" required /> Un medio
+                  alcalino.</label
+                >
+                <label
+                  ><input type="radio" name="q2" value="b" /> La presencia
+                  confirmada de cloro gaseoso.</label
+                >
+                <label
+                  ><input type="radio" name="q2" value="c" /> La ausencia de
+                  sustancias disueltas.</label
+                >
+              </fieldset>
+
+              <fieldset>
+                <legend>
+                  3. ¿Qué se debe observar después de añadir cloruro férrico
+                  comercial a una muestra de la solución?
+                </legend>
+
+                <label>
+                  <input type="radio" name="q3" value="a" required />
+                  La evaporación completa de la solución.
+                </label>
+
+                <label>
+                  <input type="radio" name="q3" value="b" />
+                  La formación de un precipitado.
+                </label>
+
+                <label>
+                  <input type="radio" name="q3" value="c" />
+                  La desaparición de los electrodos.
+                </label>
+              </fieldset>
+
+              <button type="submit" id="gradeQuizBtn">
+                Evaluar respuestas
+              </button>
+            </form>
+
+            <div id="quizResult" aria-live="polite" hidden></div>
+          </div>
+        </section>
+
+        <!-- MESA INTERACTIVA DEL LABORATORIO -->
+        <section id="workbenchScreen" class="workbench-screen" hidden>
+          <div class="workbench-heading">
+            <div>
+              <span class="workbench-stage">ETAPA 1 · PREPARACIÓN</span>
+              <h2>Mesa de laboratorio</h2>
+            </div>
+
+            <span class="workbench-step" id="workbenchStep"> Paso 1 </span>
+          </div>
+
+          <p class="workbench-instruction" id="workbenchInstruction">
+            Arrastra el vaso de precipitados hacia la mesa.
+          </p>
+
+          <div class="workbench-layout">
+            <!-- BANDEJA DE MATERIALES -->
+            <aside class="materials-tray">
+              <h3>Materiales</h3>
+
+              <div
+                id="draggableBeaker"
+                class="draggable-material"
+                draggable="true"
+                role="button"
+                tabindex="0"
+                aria-label="Seleccionar vaso de precipitados"
+              >
+                <svg
+                  viewBox="0 0 180 200"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <defs>
+                    <!-- Cristal transparente -->
+                    <linearGradient
+                      id="glassReal"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="0%"
+                    >
+                      <stop
+                        offset="0%"
+                        stop-color="#b6e9fa"
+                        stop-opacity=".24"
+                      />
+                      <stop
+                        offset="12%"
+                        stop-color="#ffffff"
+                        stop-opacity=".08"
+                      />
+                      <stop
+                        offset="45%"
+                        stop-color="#ffffff"
+                        stop-opacity=".015"
+                      />
+                      <stop
+                        offset="80%"
+                        stop-color="#b6e9fa"
+                        stop-opacity=".04"
+                      />
+                      <stop
+                        offset="100%"
+                        stop-color="#b6e9fa"
+                        stop-opacity=".22"
+                      />
+                    </linearGradient>
+
+                    <linearGradient
+                      id="rimGlass"
+                      x1="0%"
+                      y1="0%"
+                      x2="0%"
+                      y2="100%"
+                    >
+                      <stop
+                        offset="0%"
+                        stop-color="#effbff"
+                        stop-opacity=".9"
+                      />
+                      <stop
+                        offset="100%"
+                        stop-color="#8ccce5"
+                        stop-opacity=".6"
+                      />
+                    </linearGradient>
+                  </defs>
+
+                  <!-- Silueta principal: paredes y fondo -->
+                  <path
+                    d="
+      M 36 23
+      L 39 166
+      Q 39 186 59 186
+      L 121 186
+      Q 141 186 141 166
+      L 144 23
+    "
+                    fill="url(#glassReal)"
+                    stroke="#a9d9eb"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+
+                  <!-- Boca del vaso: elipse fina y continua -->
+                  <ellipse
+                    cx="90"
+                    cy="23"
+                    rx="54"
+                    ry="7"
+                    fill="#d8f4ff"
+                    fill-opacity=".035"
+                    stroke="url(#rimGlass)"
+                    stroke-width="2.6"
+                  />
+
+                  <!-- Borde frontal de la boca -->
+                  <path
+                    d="M 36 23
+       C 47 32 133 32 144 23"
+                    fill="none"
+                    stroke="#e7f8ff"
+                    stroke-opacity=".75"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+
+                  <!-- Pico vertedor pequeño e integrado -->
+
+
+                  <!-- Reflejo suave del vidrio -->
+                  <path
+                    d="M 47 40
+       Q 48 90 48 157"
+                    fill="none"
+                    stroke="#ffffff"
+                    stroke-opacity=".28"
+                    stroke-width="4"
+                    stroke-linecap="round"
+                  />
+
+                  <path
+                    d="M 133 40
+       Q 132 95 132 153"
+                    fill="none"
+                    stroke="#ffffff"
+                    stroke-opacity=".18"
+                    stroke-width="5"
+                    stroke-linecap="round"
+                  />
+
+                  <!-- Base de vidrio -->
+                  <path
+                    d="M 44 174
+       Q 52 184 68 184
+       L 112 184
+       Q 128 184 136 174"
+                    fill="none"
+                    stroke="#d7f3ff"
+                    stroke-opacity=".45"
+                    stroke-width="1.6"
+                  />
+                </svg>
+
+                <span>Vaso de 500 mL</span>
+              </div>
+
+              <!-- AGUA DESTILADA -->
+              <div
+                id="draggableWater"
+                class="draggable-material"
+                draggable="true"
+                role="button"
+                tabindex="0"
+                aria-label="Seleccionar agua destilada"
+                hidden
+              >
+                <svg
+                  viewBox="0 0 120 150"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <defs>
+                    <linearGradient id="waterBottleGlass" x1="0" x2="1">
+                      <stop
+                        offset="0%"
+                        stop-color="#a8e8ff"
+                        stop-opacity=".35"
+                      />
+                      <stop
+                        offset="55%"
+                        stop-color="#e4f8ff"
+                        stop-opacity=".12"
+                      />
+                      <stop
+                        offset="100%"
+                        stop-color="#77ccef"
+                        stop-opacity=".35"
+                      />
+                    </linearGradient>
+                  </defs>
+
+                  <!-- Tapa -->
+                  <rect
+                    x="43"
+                    y="12"
+                    width="34"
+                    height="16"
+                    rx="4"
+                    fill="#45b7e8"
+                  />
+
+                  <!-- Cuello -->
+                  <path
+                    d="M47 28 V39 H73 V28"
+                    fill="#c4efff"
+                    fill-opacity=".35"
+                    stroke="#a6ddf3"
+                    stroke-width="2"
+                  />
+
+                  <!-- Botella -->
+                  <path
+                    d="M47 39
+         L29 54
+         Q24 58 24 68
+         V127
+         Q24 138 35 138
+         H85
+         Q96 138 96 127
+         V68
+         Q96 58 91 54
+         L73 39 Z"
+                    fill="url(#waterBottleGlass)"
+                    stroke="#b4e7fa"
+                    stroke-width="2.5"
+                  />
+
+                  <!-- Agua interior -->
+                  <path
+                    d="M28 83
+         Q60 78 92 83
+         V126
+         Q92 134 84 134
+         H36
+         Q28 134 28 126 Z"
+                    fill="#45bff0"
+                    fill-opacity=".55"
+                  />
+
+                  <!-- Etiqueta -->
+                  <rect
+                    x="34"
+                    y="65"
+                    width="52"
+                    height="35"
+                    rx="5"
+                    fill="#edfaff"
+                    fill-opacity=".95"
+                  />
+
+                  <text
+                    x="60"
+                    y="79"
+                    text-anchor="middle"
+                    fill="#236383"
+                    font-size="10"
+                    font-weight="bold"
+                  >
+                    AGUA
+                  </text>
+
+                  <text
+                    x="60"
+                    y="91"
+                    text-anchor="middle"
+                    fill="#236383"
+                    font-size="8"
+                  >
+                    DESTILADA
+                  </text>
+
+                  <!-- Reflejo -->
+                  <path
+                    d="M34 58 V120"
+                    stroke="white"
+                    stroke-opacity=".35"
+                    stroke-width="4"
+                    stroke-linecap="round"
+                  />
+                </svg>
+
+                <span>Agua destilada</span>
+              </div>
+
+              <!-- MATERIAL: CLORURO DE SODIO -->
+              <div
+                id="draggableSalt"
+                class="draggable-material"
+                draggable="true"
+                role="button"
+                tabindex="0"
+                aria-label="Seleccionar cloruro de sodio"
+                hidden
+              >
+                <svg
+                  viewBox="0 0 120 150"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <defs>
+                    <linearGradient
+                      id="saltJarGlass"
+                      x1="0"
+                      y1="0"
+                      x2="1"
+                      y2="0"
+                    >
+                      <stop
+                        offset="0%"
+                        stop-color="#91c5df"
+                        stop-opacity=".35"
+                      />
+                      <stop
+                        offset="45%"
+                        stop-color="#f2fbff"
+                        stop-opacity=".13"
+                      />
+                      <stop
+                        offset="100%"
+                        stop-color="#8ac3df"
+                        stop-opacity=".38"
+                      />
+                    </linearGradient>
+
+                    <linearGradient id="saltJarCap" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#7e9eaf" />
+                      <stop offset="100%" stop-color="#354d60" />
+                    </linearGradient>
+
+                    <clipPath id="saltJarClip">
+                      <rect x="29" y="43" width="62" height="94" rx="11" />
+                    </clipPath>
+                  </defs>
+
+                  <!-- Cuerpo de vidrio -->
+                  <rect
+                    x="27"
+                    y="40"
+                    width="66"
+                    height="100"
+                    rx="13"
+                    fill="url(#saltJarGlass)"
+                    stroke="#a5d9ed"
+                    stroke-width="2.5"
+                  />
+
+                  <!-- Cristales blancos de NaCl -->
+                  <g clip-path="url(#saltJarClip)">
+                    <path
+                      d="M30 106 Q60 100 90 106 V140 H30 Z"
+                      fill="#f1f7fb"
+                      opacity=".93"
+                    />
+
+                    <g fill="#ffffff" stroke="#c7dce8" stroke-width=".6">
+                      <rect
+                        x="36"
+                        y="100"
+                        width="8"
+                        height="8"
+                        rx="1"
+                        transform="rotate(16 40 104)"
+                      />
+                      <rect x="48" y="103" width="9" height="9" rx="1" />
+                      <rect
+                        x="63"
+                        y="99"
+                        width="7"
+                        height="7"
+                        rx="1"
+                        transform="rotate(-15 66 102)"
+                      />
+                      <rect x="77" y="103" width="8" height="8" rx="1" />
+                      <rect x="41" y="116" width="10" height="10" rx="1" />
+                      <rect
+                        x="58"
+                        y="113"
+                        width="8"
+                        height="8"
+                        rx="1"
+                        transform="rotate(20 62 117)"
+                      />
+                      <rect x="73" y="119" width="9" height="9" rx="1" />
+                    </g>
+                  </g>
+
+                  <!-- Reflejo del vidrio -->
+                  <path
+                    d="M36 53 V91"
+                    fill="none"
+                    stroke="#ffffff"
+                    stroke-width="4"
+                    stroke-linecap="round"
+                    opacity=".38"
+                  />
+
+                  <!-- Etiqueta del reactivo -->
+                  <rect
+                    x="33"
+                    y="61"
+                    width="54"
+                    height="32"
+                    rx="5"
+                    fill="#eaf7ff"
+                  />
+
+                  <text
+                    x="60"
+                    y="76"
+                    text-anchor="middle"
+                    fill="#244e69"
+                    font-size="13"
+                    font-weight="bold"
+                  >
+                    NaCl
+                  </text>
+
+                  <text
+                    x="60"
+                    y="87"
+                    text-anchor="middle"
+                    fill="#45677b"
+                    font-size="7"
+                  >
+                    CLORURO DE SODIO
+                  </text>
+
+                  <!-- Tapa roscada -->
+                  <rect
+                    x="24"
+                    y="25"
+                    width="72"
+                    height="21"
+                    rx="5"
+                    fill="url(#saltJarCap)"
+                    stroke="#9bb8c9"
+                    stroke-width="1.5"
+                  />
+
+                  <g stroke="#a9c5d5" stroke-width="1.2" opacity=".55">
+                    <path d="M33 29 V42" />
+                    <path d="M41 29 V42" />
+                    <path d="M49 29 V42" />
+                    <path d="M57 29 V42" />
+                    <path d="M65 29 V42" />
+                    <path d="M73 29 V42" />
+                    <path d="M81 29 V42" />
+                    <path d="M89 29 V42" />
+                  </g>
+                </svg>
+
+                <span>Cloruro de sodio (NaCl)</span>
+              </div>
+
+              <!-- MATERIAL: ELECTRODOS DE GRAFITO -->
+              <div
+                id="draggableGraphite"
+                class="draggable-material"
+                draggable="true"
+                role="button"
+                tabindex="0"
+                aria-label="Seleccionar electrodos de grafito"
+                hidden
+              >
+                <svg
+                  viewBox="0 0 140 150"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <defs>
+                    <!-- Superficie del grafito -->
+                    <linearGradient
+                      id="graphiteBody"
+                      x1="0"
+                      y1="0"
+                      x2="1"
+                      y2="0"
+                    >
+                      <stop offset="0%" stop-color="#171c23" />
+                      <stop offset="25%" stop-color="#46515b" />
+                      <stop offset="55%" stop-color="#303840" />
+                      <stop offset="85%" stop-color="#1d252d" />
+                      <stop offset="100%" stop-color="#10151b" />
+                    </linearGradient>
+
+                    <!-- Reflejo lateral -->
+                    <linearGradient
+                      id="graphiteShine"
+                      x1="0"
+                      y1="0"
+                      x2="1"
+                      y2="0"
+                    >
+                      <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
+                      <stop
+                        offset="50%"
+                        stop-color="#c5d4df"
+                        stop-opacity=".25"
+                      />
+                      <stop
+                        offset="100%"
+                        stop-color="#ffffff"
+                        stop-opacity="0"
+                      />
+                    </linearGradient>
+                  </defs>
+
+                  <!-- Primer electrodo -->
+                  <g>
+                    <rect
+                      x="38"
+                      y="22"
+                      width="18"
+                      height="105"
+                      rx="6"
+                      fill="url(#graphiteBody)"
+                      stroke="#71808c"
+                      stroke-width="1.2"
+                    />
+
+                    <rect
+                      x="43"
+                      y="29"
+                      width="4"
+                      height="89"
+                      rx="2"
+                      fill="url(#graphiteShine)"
+                    />
+
+                    <ellipse
+                      cx="47"
+                      cy="22"
+                      rx="9"
+                      ry="3.5"
+                      fill="#66717b"
+                      stroke="#9ba9b4"
+                      stroke-width="1"
+                    />
+
+                    <path
+                      d="M39 114 Q47 119 55 114"
+                      fill="none"
+                      stroke="#73818c"
+                      stroke-opacity=".45"
+                    />
+                  </g>
+
+                  <!-- Segundo electrodo -->
+                  <g>
+                    <rect
+                      x="84"
+                      y="22"
+                      width="18"
+                      height="105"
+                      rx="6"
+                      fill="url(#graphiteBody)"
+                      stroke="#71808c"
+                      stroke-width="1.2"
+                    />
+
+                    <rect
+                      x="89"
+                      y="29"
+                      width="4"
+                      height="89"
+                      rx="2"
+                      fill="url(#graphiteShine)"
+                    />
+
+                    <ellipse
+                      cx="93"
+                      cy="22"
+                      rx="9"
+                      ry="3.5"
+                      fill="#66717b"
+                      stroke="#9ba9b4"
+                      stroke-width="1"
+                    />
+
+                    <path
+                      d="M85 114 Q93 119 101 114"
+                      fill="none"
+                      stroke="#73818c"
+                      stroke-opacity=".45"
+                    />
+                  </g>
+
+                  <!-- Indicador visual de dos piezas -->
+                  <text
+                    x="70"
+                    y="141"
+                    text-anchor="middle"
+                    fill="#9bc9df"
+                    font-size="10"
+                  >
+                    2 electrodos
+                  </text>
+                </svg>
+
+                <span>Electrodos de grafito</span>
+              </div>
+
+              <!-- MATERIAL: FUENTE DE CORRIENTE CONTINUA -->
+              <div
+                id="draggablePowerSupply"
+                class="draggable-material"
+                draggable="true"
+                role="button"
+                tabindex="0"
+                aria-label="Seleccionar fuente de corriente continua"
+                hidden
+              >
+                <svg
+                  viewBox="0 0 200 150"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <defs>
+                    <linearGradient id="powerCase" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#607889" />
+                      <stop offset="48%" stop-color="#354958" />
+                      <stop offset="100%" stop-color="#182b39" />
+                    </linearGradient>
+
+                    <linearGradient
+                      id="powerScreen"
+                      x1="0"
+                      y1="0"
+                      x2="0"
+                      y2="1"
+                    >
+                      <stop offset="0%" stop-color="#193b43" />
+                      <stop offset="100%" stop-color="#0c252d" />
+                    </linearGradient>
+                  </defs>
+
+                  <!-- Sombra -->
+                  <ellipse
+                    cx="100"
+                    cy="133"
+                    rx="81"
+                    ry="8"
+                    fill="#06121c"
+                    opacity=".3"
+                  />
+
+                  <!-- Carcasa -->
+                  <rect
+                    x="16"
+                    y="26"
+                    width="168"
+                    height="102"
+                    rx="13"
+                    fill="url(#powerCase)"
+                    stroke="#91a7b7"
+                    stroke-width="2"
+                  />
+
+                  <!-- Panel frontal -->
+                  <rect
+                    x="24"
+                    y="34"
+                    width="152"
+                    height="85"
+                    rx="8"
+                    fill="#1c303f"
+                    stroke="#698394"
+                    stroke-width="1.5"
+                  />
+
+                  <!-- Asa superior -->
+                  <path
+                    d="M77 26 V17 Q77 12 84 12 H116 Q123 12 123 17 V26"
+                    fill="none"
+                    stroke="#91a5b4"
+                    stroke-width="7"
+                    stroke-linecap="round"
+                  />
+
+                  <!-- Pantalla digital apagada -->
+                  <rect
+                    x="35"
+                    y="43"
+                    width="130"
+                    height="40"
+                    rx="5"
+                    fill="url(#powerScreen)"
+                    stroke="#50717d"
+                    stroke-width="1.5"
+                  />
+
+                  <text
+                    x="100"
+                    y="59"
+                    text-anchor="middle"
+                    fill="#8eecc0"
+                    font-size="15"
+                    font-family="monospace"
+                    font-weight="bold"
+                  >
+                    9 V
+                  </text>
+
+                  <text
+                    x="100"
+                    y="74"
+                    text-anchor="middle"
+                    fill="#527b79"
+                    font-size="12"
+                    font-family="monospace"
+                  >
+                    OFF
+                  </text>
+
+                  <!-- Terminal negativo -->
+                  <circle
+                    cx="55"
+                    cy="100"
+                    r="10"
+                    fill="#101820"
+                    stroke="#8295a2"
+                    stroke-width="2"
+                  />
+                  <circle cx="55" cy="100" r="5" fill="#303c49" />
+                  <text
+                    x="55"
+                    y="90"
+                    text-anchor="middle"
+                    fill="#c7e2f1"
+                    font-size="9"
+                  >
+                    −
+                  </text>
+
+                  <!-- Terminal positivo -->
+                  <circle
+                    cx="145"
+                    cy="100"
+                    r="10"
+                    fill="#b83942"
+                    stroke="#f08e95"
+                    stroke-width="2"
+                  />
+                  <circle cx="145" cy="100" r="5" fill="#ed6970" />
+                  <text
+                    x="145"
+                    y="90"
+                    text-anchor="middle"
+                    fill="#ffd3d6"
+                    font-size="9"
+                  >
+                    +
+                  </text>
+
+                  <!-- Control central -->
+                  <circle
+                    cx="100"
+                    cy="102"
+                    r="11"
+                    fill="#435a6b"
+                    stroke="#a2b7c4"
+                    stroke-width="2"
+                  />
+                  <circle cx="100" cy="102" r="5" fill="#253b4b" />
+                  <path
+                    d="M100 94 V99"
+                    stroke="#dcebf3"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+
+                  <!-- Patas de goma -->
+                  <rect
+                    x="31"
+                    y="124"
+                    width="22"
+                    height="6"
+                    rx="2"
+                    fill="#121b23"
+                  />
+                  <rect
+                    x="147"
+                    y="124"
+                    width="22"
+                    height="6"
+                    rx="2"
+                    fill="#121b23"
+                  />
+                </svg>
+
+                <span>Fuente de corriente continua</span>
+              </div>
+              <!-- MEMBRANA SEPARADORA -->
+              <div
+                id="draggableMembrane"
+                class="draggable-material"
+                draggable="true"
+                role="button"
+                tabindex="0"
+                aria-label="Seleccionar membrana separadora"
+                hidden
+              >
+                <svg
+                  viewBox="0 0 120 150"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <rect
+                    x="43"
+                    y="12"
+                    width="34"
+                    height="126"
+                    rx="5"
+                    fill="#f5d68a"
+                    fill-opacity="0.35"
+                    stroke="#f5d68a"
+                    stroke-width="3"
+                  />
+
+                  <path
+                    d="M50 20 V130 M60 20 V130 M70 20 V130"
+                    stroke="#f5d68a"
+                    stroke-opacity="0.55"
+                    stroke-width="1.5"
+                    stroke-dasharray="4 5"
+                  />
+                </svg>
+
+                <span>Membrana separadora</span>
+              </div>
+
+              <!-- MATERIAL: CABLES DE CONEXIÓN -->
+              <div
+                id="draggableCables"
+                class="draggable-material"
+                draggable="true"
+                role="button"
+                tabindex="0"
+                aria-label="Seleccionar cables de conexión"
+                hidden
+              >
+                <svg
+                  viewBox="0 0 160 140"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <defs>
+                    <linearGradient id="redCableGrip" x1="0" x2="1">
+                      <stop offset="0%" stop-color="#8d202d" />
+                      <stop offset="50%" stop-color="#f26873" />
+                      <stop offset="100%" stop-color="#a82d3b" />
+                    </linearGradient>
+
+                    <linearGradient id="blackCableGrip" x1="0" x2="1">
+                      <stop offset="0%" stop-color="#111820" />
+                      <stop offset="50%" stop-color="#53606d" />
+                      <stop offset="100%" stop-color="#18222c" />
+                    </linearGradient>
+                  </defs>
+
+                  <!-- Cable rojo -->
+                  <path
+                    d="M35 35 C10 60 22 115 75 109
+         C120 105 137 70 120 41"
+                    fill="none"
+                    stroke="#f05a65"
+                    stroke-width="6"
+                    stroke-linecap="round"
+                  />
+
+                  <!-- Cable negro -->
+                  <path
+                    d="M55 24 C35 55 45 89 85 89
+         C123 89 135 55 111 25"
+                    fill="none"
+                    stroke="#252f3a"
+                    stroke-width="6"
+                    stroke-linecap="round"
+                  />
+
+                  <!-- Conector rojo izquierdo -->
+                  <g transform="translate(35 35) rotate(35)">
+                    <rect
+                      x="-8"
+                      y="-20"
+                      width="16"
+                      height="28"
+                      rx="5"
+                      fill="url(#redCableGrip)"
+                      stroke="#ff9aa2"
+                    />
+                    <rect
+                      x="-4"
+                      y="-30"
+                      width="8"
+                      height="13"
+                      rx="2"
+                      fill="#aab9c3"
+                    />
+                    <path d="M-4 -30 L0 -40 L4 -30" fill="#c9d7df" />
+                  </g>
+
+                  <!-- Conector rojo derecho -->
+                  <g transform="translate(120 41) rotate(-30)">
+                    <rect
+                      x="-8"
+                      y="-20"
+                      width="16"
+                      height="28"
+                      rx="5"
+                      fill="url(#redCableGrip)"
+                      stroke="#ff9aa2"
+                    />
+                    <rect
+                      x="-4"
+                      y="-30"
+                      width="8"
+                      height="13"
+                      rx="2"
+                      fill="#aab9c3"
+                    />
+                    <path d="M-4 -30 L0 -40 L4 -30" fill="#c9d7df" />
+                  </g>
+
+                  <!-- Conector negro izquierdo -->
+                  <g transform="translate(55 24) rotate(30)">
+                    <rect
+                      x="-7"
+                      y="-18"
+                      width="14"
+                      height="25"
+                      rx="4"
+                      fill="url(#blackCableGrip)"
+                      stroke="#81909b"
+                    />
+                    <rect
+                      x="-3"
+                      y="-28"
+                      width="6"
+                      height="12"
+                      rx="2"
+                      fill="#aab9c3"
+                    />
+                  </g>
+
+                  <!-- Conector negro derecho -->
+                  <g transform="translate(111 25) rotate(-25)">
+                    <rect
+                      x="-7"
+                      y="-18"
+                      width="14"
+                      height="25"
+                      rx="4"
+                      fill="url(#blackCableGrip)"
+                      stroke="#81909b"
+                    />
+                    <rect
+                      x="-3"
+                      y="-28"
+                      width="6"
+                      height="12"
+                      rx="2"
+                      fill="#aab9c3"
+                    />
+                  </g>
+
+                  <text
+                    x="80"
+                    y="132"
+                    text-anchor="middle"
+                    fill="#a8d8ed"
+                    font-size="10"
+                    font-family="Arial, sans-serif"
+                  >
+                    Cables (+ / −)
+                  </text>
+                </svg>
+
+                <span>Cables de conexión</span>
+              </div>
+
+              <!-- MATERIAL: FENOLFTALEÍNA -->
+              <div
+                id="draggablePhenolphthalein"
+                class="draggable-material"
+                draggable="true"
+                role="button"
+                tabindex="0"
+                aria-label="Seleccionar indicador de fenolftaleína"
+                hidden
+              >
+                <svg
+                  viewBox="0 0 120 150"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <!-- Tapa del gotero -->
+                  <rect
+                    x="48"
+                    y="12"
+                    width="24"
+                    height="24"
+                    rx="5"
+                    fill="#26394d"
+                    stroke="#8ba7ba"
+                    stroke-width="2"
+                  />
+
+                  <!-- Cuello -->
+                  <rect
+                    x="51"
+                    y="34"
+                    width="18"
+                    height="15"
+                    fill="#c6e9f8"
+                    fill-opacity="0.45"
+                    stroke="#9bc8db"
+                    stroke-width="2"
+                  />
+
+                  <!-- Frasco -->
+                  <rect
+                    x="30"
+                    y="46"
+                    width="60"
+                    height="88"
+                    rx="12"
+                    fill="#b6e4f5"
+                    fill-opacity="0.15"
+                    stroke="#a8d8eb"
+                    stroke-width="2.5"
+                  />
+
+                  <!-- Líquido indicador, inicialmente incolor -->
+                  <path
+                    d="M35 91 H85 V120 Q85 129 76 129 H44 Q35 129 35 120 Z"
+                    fill="#e2f8ff"
+                    fill-opacity="0.32"
+                  />
+
+                  <!-- Etiqueta -->
+                  <rect
+                    x="35"
+                    y="63"
+                    width="50"
+                    height="29"
+                    rx="4"
+                    fill="#f0f6fa"
+                  />
+
+                  <text
+                    x="60"
+                    y="75"
+                    text-anchor="middle"
+                    font-size="8"
+                    font-weight="bold"
+                    fill="#26394d"
+                  >
+                    INDICADOR
+                  </text>
+
+                  <text
+                    x="60"
+                    y="85"
+                    text-anchor="middle"
+                    font-size="7"
+                    fill="#26394d"
+                  >
+                    FENOLFTALEÍNA
+                  </text>
+
+                  <!-- Reflejo del vidrio -->
+                  <path
+                    d="M40 99 V119"
+                    stroke="#ffffff"
+                    stroke-opacity="0.45"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                  />
+                </svg>
+
+                <span>Fenolftaleína</span>
+              </div>
+
+              <!-- PASO 10: PIPETA PARA EXTRAER MUESTRA -->
+              <div
+                id="draggablePipette"
+                class="draggable-material"
+                role="button"
+                tabindex="0"
+                aria-label="Seleccionar pipeta"
+                hidden
+              >
+                <svg viewBox="0 0 120 150" aria-hidden="true">
+                  <!-- Pera de la pipeta -->
+                  <ellipse
+                    cx="60"
+                    cy="24"
+                    rx="17"
+                    ry="19"
+                    fill="#62b7df"
+                    stroke="#a5e3fa"
+                    stroke-width="2"
+                  />
+
+                  <!-- Cuerpo -->
+                  <rect
+                    x="55"
+                    y="42"
+                    width="10"
+                    height="75"
+                    rx="4"
+                    fill="#c7edfa"
+                    fill-opacity=".6"
+                    stroke="#a5d7e9"
+                    stroke-width="2"
+                  />
+
+                  <!-- Punta -->
+                  <path
+                    d="M55 115 L60 143 L65 115 Z"
+                    fill="#b4e8f7"
+                    stroke="#a5d7e9"
+                    stroke-width="1.5"
+                  />
+
+                  <!-- Muestra -->
+                  <rect
+                    x="57"
+                    y="90"
+                    width="6"
+                    height="23"
+                    rx="2"
+                    fill="#7dc9e9"
+                    fill-opacity=".8"
+                  />
+                </svg>
+                <span>Pipeta de muestreo</span>
+              </div>
+
+              <!-- PASO 12: CLORURO FÉRRICO -->
+              <div
+                id="draggableFerricChloride"
+                class="draggable-material"
+                role="button"
+                tabindex="0"
+                aria-label="Seleccionar cloruro férrico"
+                hidden
+              >
+                <svg viewBox="0 0 120 150" aria-hidden="true">
+                  <!-- Tapa -->
+                  <rect
+                    x="45"
+                    y="12"
+                    width="30"
+                    height="24"
+                    rx="5"
+                    fill="#26394d"
+                    stroke="#8ba7ba"
+                    stroke-width="2"
+                  />
+
+                  <!-- Cuello -->
+                  <rect
+                    x="49"
+                    y="35"
+                    width="22"
+                    height="13"
+                    fill="#a9cbd9"
+                    stroke="#8ba7ba"
+                    stroke-width="2"
+                  />
+
+                  <!-- Frasco -->
+                  <rect
+                    x="28"
+                    y="46"
+                    width="64"
+                    height="88"
+                    rx="12"
+                    fill="#9b693c"
+                    fill-opacity=".55"
+                    stroke="#d2a36b"
+                    stroke-width="2.5"
+                  />
+
+                  <!-- Reactivo -->
+                  <path
+                    d="M33 94 H87 V119 Q87 129 77 129
+         H43 Q33 129 33 119 Z"
+                    fill="#c78b36"
+                    fill-opacity=".7"
+                  />
+
+                  <!-- Etiqueta -->
+                  <rect
+                    x="35"
+                    y="61"
+                    width="50"
+                    height="32"
+                    rx="4"
+                    fill="#f0f6fa"
+                  />
+
+                  <text
+                    x="60"
+                    y="75"
+                    text-anchor="middle"
+                    font-size="11"
+                    font-weight="bold"
+                    fill="#26394d"
+                  >
+                    FeCl₃
+                  </text>
+
+                  <text
+                    x="60"
+                    y="86"
+                    text-anchor="middle"
+                    font-size="7"
+                    fill="#26394d"
+                  >
+                    CLORURO FÉRRICO
+                  </text>
+                </svg>
+
+                <span>Cloruro férrico</span>
+              </div>
+            </aside>
+
+            <!-- MESA DE TRABAJO -->
+            <div class="lab-table-area">
+              <!-- PASO 10: TUBO PARA LA MUESTRA -->
+              <div id="sampleTubeStation" hidden>
+                <svg
+                  viewBox="0 0 100 160"
+                  role="img"
+                  aria-label="Tubo de ensayo con boca visible"
+                >
+                  <!-- Paredes y fondo del tubo -->
+                  <path
+                    d="M32 20 V119 Q32 140 50 140 Q68 140 68 119 V20"
+                    fill="#b9e9f7"
+                    fill-opacity=".12"
+                    stroke="#a8d8eb"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <!-- Líquido: aparece cuando se toma la muestra -->
+                  <path
+                    id="sampleTubeLiquid"
+                    d="M35 93 H65 V119 Q65 137 50 137 Q35 137 35 119 Z"
+                    fill="#8ed8f2"
+                    fill-opacity=".55"
+                    visibility="hidden"
+                  />
+                  <!-- Boca elíptica visible sobre las paredes -->
+                  <ellipse
+                    cx="50"
+                    cy="20"
+                    rx="18"
+                    ry="4.5"
+                    fill="#c5ebf7"
+                    fill-opacity=".12"
+                    stroke="#e4f8ff"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M36 35 V113"
+                    fill="none"
+                    stroke="#fff"
+                    stroke-opacity=".25"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                <span>Muestra reservada</span>
+              </div>
+
+              <div
+                id="beakerDropZone"
+                class="beaker-drop-zone"
+                tabindex="0"
+                role="button"
+                aria-label="Colocar vaso en la mesa"
+              >
+                <div id="beakerPlaceholder" class="beaker-placeholder">
+                  <svg viewBox="0 0 120 140" aria-hidden="true">
+                    <path
+                      d="M23 18 V111 Q23 124 37 124
+                 H83 Q97 124 97 111 V18"
+                      fill="none"
+                      stroke="#8aa8ba"
+                      stroke-width="3"
+                      stroke-dasharray="7 6"
+                    />
+                    <path
+                      d="M19 18 H101"
+                      stroke="#8aa8ba"
+                      stroke-width="3"
+                      stroke-dasharray="7 6"
+                    />
+                  </svg>
+
+                  <span>Colocar aquí</span>
+                </div>
+
+                <div id="placedBeaker" class="placed-beaker" hidden></div>
+              </div>
+              <!-- Zona para colocar la fuente de corriente continua -->
+
+              <!-- Zona de colocación de la fuente -->
+              <div
+                id="powerSupplyDropZone"
+                class="power-supply-drop-zone"
+                aria-label="Zona para colocar la fuente de corriente continua"
+              >
+                <div id="powerSupplyGuide" class="power-supply-guide" hidden>
+                  <span class="power-guide-arrow">↓</span>
+                  <span>Arrastra aquí</span>
+                </div>
+
+                <div id="placedPowerSupply" hidden></div>
+              </div>
+              <!-- Capa visual para las conexiones eléctricas -->
+              <svg
+                id="electricalConnections"
+                class="electrical-connections"
+                aria-hidden="true"
+              ></svg>
+
+              <div class="lab-table-surface"></div>
+            </div>
+          </div>
+
+          <div class="workbench-footer">
+            <p id="workbenchStatus">Material colocado: 0 de 1</p>
+
+            <button id="nextWorkbenchBtn" type="button" disabled>
+              Siguiente paso →
+            </button>
+          </div>
+        </section>
       </main>
-      <footer class="legal">
-        Simulación educativa. No representa instrucciones para realizar
-        electrólisis física.
-      </footer>
     </div>
     <script src="script.js"></script>
   </body>
